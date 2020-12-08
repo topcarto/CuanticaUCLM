@@ -6,7 +6,8 @@ En la primera parte del artículo, habla de usar Adiabatic Quantum Optimization 
 Hamiltonianos cuánticos; uno cuyo estado base tenga encriptada la solución al problema llamado Hp, y otro cuyo estado base sea "fácil" de encontrar y de preparar
 llamado Ho. Con estos hamiltonianos, si preparamos un sistema cuántico que esté en el estado base de Ho, y se cambia adiabáticamente hasta llegar a Hp con la fórmula:
 
-H(t) = (1−t / T) * Ho + t/T * Hp
+![AQO]
+(https://raw.githubusercontent.com/topcarto/CuanticaUCLM/Knapsack/AQO.PNG)
 
 Siendo T la cantidad de tiempo adecuada para que el AQO funcione, cuando t sea igual a T, obtendremos una de las posibles soluciones al problema. Vamos a explicar esto
 más detalladamente.
