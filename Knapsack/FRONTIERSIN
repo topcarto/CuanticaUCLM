@@ -1,7 +1,9 @@
 Este documento intentará explicar el contenido del artículo "Ising formulations of many NP problems by Andrew Lucas" de Frontiersin.
 Enlace: https://www.frontiersin.org/articles/10.3389/fphy.2014.00005/full
 
-1.INTRODUCCIÓN
+1. INTRODUCCIÓN
+
+1.1. Quantum Adiabatic Optimization
 En la primera parte del artículo, habla de usar Adiabatic Quantum Optimization (AQO) para resolver problemas de optimización cuántica. Para ello, se habla de usar dos
 Hamiltonianos cuánticos; uno cuyo estado base tenga encriptada la solución al problema llamado Hp, y otro cuyo estado base sea "fácil" de encontrar y de preparar
 llamado Ho. Con estos hamiltonianos, si preparamos un sistema cuántico que esté en el estado base de Ho, y se cambia adiabáticamente hasta llegar a Hp con la fórmula:
@@ -24,5 +26,34 @@ T= O[exp (α * N^β)]
 
 Sin embargo, aún cabe la posibilidad de que los coeficientes α y β sean más pequeños que en los algoritmos clásicos. La teoría dice que esto puede ser posible expresando
 Hp como un Ising Sping glass, con la fórmula:
+
+H (s1,…,sN)= −∑(i<j) Jij * si * sj − ∑(i=1, N) hi * si
+
+O más simplemente:
+
+Hp = H(σz1,…,σzN)
+
+Donde σzi es una matriz de Pauli 2x2, Jij y hi son números reales correspondientes a la energía que tiene la relación entre sus índices (siendo los índices de hi i-i), y
+si el valor de ese qubit en un determinado escenario. Cabe destacar que puede que esta clase de Hamiltonianos no sean suficientes para esta metodología, por lo que puede
+que se necesite usar unos hamiltonianos especiales llamados Hamiltonianos "stoquastic"; pero por ahora vamos a concentrarnos en los Hamiltonianos básicos.
+
+1.2. Ising Spin glasses
+
+Los Ising Spin glasses han sido siempre problemas NP-hard, por lo que tiene sentido que guarden relación con otros problemas NP. El papel habla que para más simplicidad,
+a partir de ahora consideraremos que los problemas NP-hard son de optimización. Los problemas NP-complete han atraído la atención de muchas personas, por lo que es
+normal que estos problemas estén más investigados y explicados que los NP-hard.
+
+Analogías entre la física estadística de los problemas NP y los Ising Spin glasses han sido estudiadas frecuentemente en el pasado, y han sido usadas para construir
+algortimos aproximados para problemas en computadores clásicos.
+
+1.3. The Goal of This Paper
+
+Matemáticamente, el hecho de que un problema sea NP-complete significa que puede ser reinterpretado como un problema de optimización pseudo-booleano. Como estos
+problemas a menudo nos llevan a interacciones de 3 o más cuerpos en H (s1s2s3), podemos reducir el problema para que sea un problema de Ising Spin glass introduciendo
+un número polinómico de spins auxiliares con múltiples interacciones entre dos cuerpos. Artilugios clásicos son bastante útiles para muchos problemas en física ya que
+la energía de los Hamiltonianos contienen interacciones de 3 cuerpos. Sin embargo, en los problemas genéricos, esto es un procedimiento poco eficiente, ya que la
+complejidad del polinomio puede aumentar drásticamente.
+
+
 
 
