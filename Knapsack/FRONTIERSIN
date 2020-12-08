@@ -21,4 +21,7 @@ NP-completos es menos eficiente que los algoritmos clásicos, ya que normalmente
 
 T= O[exp (α * N^β)]
 
-Sin embargo, aún cabe la posibilidad de que los coeficientes α y β sean más pequeños que en los algoritmos clásicos.
+Sin embargo, aún cabe la posibilidad de que los coeficientes α y β sean más pequeños que en los algoritmos clásicos. La teoría dice que esto puede ser posible expresando
+Hp como un Ising Sping glass, con la fórmula:
+
+
