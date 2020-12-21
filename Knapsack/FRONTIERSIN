@@ -99,6 +99,20 @@ que cuenta el número de subconjuntos obtenidos. Haciendo que A > B nos aseguram
 Sin embargo, podemos plantear este problema de otra forma. Si consideramos un grafo G = (V,E) donde cada conjunto Vi contiene un vértice i ∈ V. Una arista E existe
 en ij cuando Vi ∩ Vj no está vacío. Se puede ver más fácilmente si sustituimos el HA anterior con: 
 
-HA = A * ∑(ij ∈ E) xi * xj
+HA = A * ∑(i j ∈ E) xi * xj
 
 Esta versión del problema se puede llamar "maximal independent set" (MIS).
+
+4.3. Vertex Cover
+
+Dado un grafo indirecto G = (V,E), ¿cuál es el menor número de vértices "coloreados" de tal forma que todos los vértices estén unidos a un vértice coloreado por una
+arista? Pongamos xv como un valor binario de cada vértice, siendo 1 coloreado y 0 sin colorear. Nuestro hamiltoniano será otra vez H = HA + HB; siendo
+
+HA = A * ∑(u v ∈ E)(1 − xu)(1 − xv)
+
+que codifica la restricción de que cada arista está compuesta por al menos 1 vértice coloreado, y
+
+HB = B * ∑(v)(xv)
+
+que deberemos minimizar para obtener la solución a este problema. Si hacemos que A > B para asegurarnos de que la restricción de HA se cumple. El número de spins
+necesarios es el número de vértices en el grafo.
