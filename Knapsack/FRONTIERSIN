@@ -55,5 +55,50 @@ la energía de los Hamiltonianos contienen interacciones de 3 cuerpos. Sin embar
 complejidad del polinomio puede aumentar drásticamente.
 
 
+4. Covering and Packaging Problems
 
+Los problemas de "Covering and Packaging" se pueden resumir con la pregunta: ¿Cómo puedo coger elementos de un grafo de forma que se quede "cubierto" de una forma
+simple? En estos problemas hay restricciones que deben ser cumplidas obligatoriamente. Estos problemas son de los más famosos ya que son el único tipo de problemas
+que se puede hacer con un simple grafo aunque ni siquiera esté completo.
 
+4.1. Exact Cover
+
+En este problema, considera un dominio U con un conjunto de subdominios Vi ⊆ U, tal que el conjunto de los subdominios sea U. La pregunta es, ¿hay un subdominio,
+llamado R, tal que sus elementos seas conjuntos desunidos y que la unión de sus elementos sea U? O en otras palabras, formar subconjuntos de forma que todos los 
+elementos de U estén contenidos en ellos. El hamiltoniano que se propone es:
+
+HA = A * ∑(α=1)(n)(1 − ∑(i:α ∈ Vi) * xi) ^ 2.
+
+Siendo α los elementos de U, y siendo i el indice de los subconjuntos Vi. Cuando todos los elementos han sido incluidos exactamente una vez, HA = 0, lo que
+significaría que los elementos también están desunidos. Si existe un estado en el que HA = 0, ese estado correspondería con la solución al problema. Si ese estado es
+degenerativo (que hay varios estados base), entonces habría múltiples soluciones a este problema. Se necesitan N spins.
+
+Este problema se puede complicar más para encontrar el R más pequeño, haciendo que este problema sea NP-Hard. Esto se consigue añadiendo un segundo hamiltoniano, HB
+que es:
+
+HB = B * ∑(i)(xi)
+
+El estado base de este modelo será mB, siendo m el mínimo número de subconjuntos necesarios. Para conseguir el ratio adecuado de A/B, queremos codificar estas
+constantes poniéndonos en el peor escenario posible que sería un número muy pequeño de subconjuntos con un solo elemento en común, cuya unión es U. Para que esto no
+pase, podemos configurarlo para que sea: A > n * B; siendo n el número de elementos de U. Con este segundo hamiltoniano, se hace que la fórmula H = HA + HB se 
+minimice todo lo posible.
+
+4.2. Set Packing
+
+Considerando la misma situación que antes, pero con una pregunta diferente: ¿Cuál es el mayor número de subconjuntos Vi que estén desunidos? La optimización de este
+problema es NP-hard. Para resolver este problema, usaremos otra vez H = HA + HB, siendo:
+
+HA = A * ∑(i,j : Vi ∩ Vj ≠ ∅)(xi * xj)
+
+que controla que los subconjuntos estén desunidos, y
+
+HB = −B * ∑(i) * xi
+
+que cuenta el número de subconjuntos obtenidos. Haciendo que A > B nos aseguramos de que nunca se va a incumplir la condición que impone HA.
+
+Sin embargo, podemos plantear este problema de otra forma. Si consideramos un grafo G = (V,E) donde cada conjunto Vi contiene un vértice i ∈ V. Una arista E existe
+en ij cuando Vi ∩ Vj no está vacío. Se puede ver más fácilmente si sustituimos el HA anterior con: 
+
+HA = A * ∑(ij ∈ E) xi * xj
+
+Esta versión del problema se puede llamar "maximal independent set" (MIS).
