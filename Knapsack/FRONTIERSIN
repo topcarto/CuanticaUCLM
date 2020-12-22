@@ -116,3 +116,55 @@ HB = B * ∑(v)(xv)
 
 que deberemos minimizar para obtener la solución a este problema. Si hacemos que A > B para asegurarnos de que la restricción de HA se cumple. El número de spins
 necesarios es el número de vértices en el grafo.
+
+4.4. Satisfiability
+
+Todos los problemas de satisfacibilidad pueden ser tratados como un problema 3SAT. En este caso, veremos si
+
+Ψ = C1 ∧ C2 ⋯ ∧ Cm
+
+puede ser "verdadero". Por ejemplo, podemos ver si todos los Ci (1 ≤ i ≤ m) son verdadero, donde cada forma de Ci es:
+
+Ci = yi1 ∨ yi2 ∨ yi3
+
+Aquí, yi1, yi2 e yi3 son seleccionados de otro conjunto de valores booleanos x1,...,xN,x1',...,xN'.
+
+Se puede reducir este problema a un MIS. Si tomamos como ejemplo el problema que planteamos en el punto 2 de Set Packing, tenemos un grafo con 3m nodos. Por cada
+cláusula Ci, añadimos 3 nodos al grafo y lo conectamos con otros 3. Después de esto, deberíamos tener un y1 e y2 tal que y1 = y2', y añadimos otra arista entre esos
+dos nodos. Resolviendo el problema como MIS y preguntándonos si la solución tiene exactamente m nodos, podemos resolver el problema por 3SAT.
+
+Esto se puede interpretar de la siguiente manera: Si existe una solución 3SAT, significa que solo se necesita que una de las cláusulas sea verdadero. Si hay más
+cláusulas verdaderas también es aceptable, pero debemos tener al menos una verdadera. Sin embargo, no podemos elegir que x1 y x1' sean ambos verdadero, para ello 
+debemos conectar todos estos puntos con una arista. Ahora que el grafo está compuesto por m triángulos conectados, la única manera de colorear m vértices es que cada
+vértice esté en un triángulo diferente haciendo que haya al menos un elemento en cada cláusula Ci que sea verdadero.
+
+También se puede tomar este problema como un problema de optimización al preguntarnos cuál es el menor número de restricciones que debamos ignorar para resolver el
+problema.
+
+4.5. Minimal Maximal Matching
+
+Los problemas de Minimax Matching de un grafo se definen de la siguiente manera: Si G = (V,E) como un grafo y C ⊆ E es un "coloreado" propuesto con las siguientes
+restricciones: Por cada arista en C, se colorean los vértices que conectan (D = ∪e∈C ∂e). Necesitamos que ningún par de aristas compartan un mismo vértice
+(e1, e2 ∈ C, ∂e1 ∩ ∂e2 = ∅) y que si u y v pertenecen a D, no pertenezcan a E. Esto tiene una parte de minimización ya que no se pueden añadir más aristas a C sin
+violar la primera restricción; y de máximización ya que debemos incluir todas las aristas entre vértices sin colorear.
+
+Podemos usar los spins en el grafo para modelar si una arista está coloreada o no (usando, por ejemplo, la variable xe). El número de spins es |E| = O(ΔN), o sea, el
+tamaño del conjunto de aristas. Para codificar el problema, usamos una serie de 3 hamiltonianos:
+
+H = HA + HB + HC
+
+El primer hamiltoniano, HA, impondrá la condición de que un vértice no puede tener dos aristas coloreadas:
+
+HA = A * ∑(v) (∑({e1, e2} ⊂ ∂v) (xe1 * xe2))
+
+Siendo ∂v el subconjunto de E que conectan a v, y A > 0. El estado base sería HA = 0, ya que si fuese HA > 0 significaría que hay un vértice con dos o más aristas
+coloreadas.
+
+Definimos HB para que las soluciones que buscamos hagan que HB = 0. Usaremos HB para ver si hay alguna arista que no haya sido coloreada con:
+
+HB = B * ∑(e=(uv))((1−yu) * (1−yv))
+
+
+
+
+
