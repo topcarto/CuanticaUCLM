@@ -164,7 +164,26 @@ Definimos HB para que las soluciones que buscamos hagan que HB = 0. Usaremos HB 
 
 HB = B * ∑(e=(uv))((1−yu) * (1−yv))
 
+La idea es sumar todas las aristas del grafo y comprobar si la arista está conectada a dos vértices sin colorear. Como "1 - yv" puede llegar a ser negativo, debemos
+elegir un B > 0  lo suficientemente pequeño. Esto solo pasa cuando yu = 0 e yv > 1, siendo (uv) ∈ E. Supongamos que tenemos m cantidad de vecinos de v que tienen
+yv = 0. Entonces, las contribuciones a HA y HB vienen dadas por:
 
+Hv = A * (yv(yv−1)/2) − B * (yu−1) * m
 
+Hay que destacar que m + yu ≤ k, siendo k el grado del nodo v. Con esto podemos concluir que, si Δ es el máximo grado en el grafo, ya que el peor escenario posible es
+yv = 2, m = Δ - 2:
+
+A > (Δ − 2) * B
+
+Con esto, nunca será favorable que tengamos ningún yv > 1. Con todo esto, nos aseguramos de que el estado base de HA + HB sea HA = HB = 0.
+
+Por último, ahora que tenemos HA y HB que encodificarán las condiciones que tiene que cumplir la solución, debemos sacar HC que nos permitirá calcular finalmente el
+menor número de aristas coloreadas posible. Para eso tenemos:
+
+HC = C * ∑(e)(xe)
+
+C debe ser lo suficientemente pequeño para que no se violen las restricciones que imponen HA y HB. Se necesita que C < B, ya que en HB se penalizan las aristas que
+pueden estar coloreadas pero que no lo están. Al final, el estado con el menor HC será el que tenga el menor número de aristas coloreadas, es decir, la solución a
+nuestro problema.
 
 
