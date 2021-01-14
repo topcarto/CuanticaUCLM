@@ -117,7 +117,7 @@ HB = B * ∑(v)(xv)
 que deberemos minimizar para obtener la solución a este problema. Si hacemos que A > B para asegurarnos de que la restricción de HA se cumple. El número de spins
 necesarios es el número de vértices en el grafo.
 
-4.4. Satisfiability
+4.4. Satisfacibilidad
 
 Todos los problemas de satisfacibilidad pueden ser tratados como un problema 3SAT. En este caso, veremos si
 
@@ -186,4 +186,25 @@ C debe ser lo suficientemente pequeño para que no se violen las restricciones q
 pueden estar coloreadas pero que no lo están. Al final, el estado con el menor HC será el que tenga el menor número de aristas coloreadas, es decir, la solución a
 nuestro problema.
 
+
+5. Problemas de inecuaciones
+
+Las inecuaciones son difíciles de manejar, pero podemos pasarlas a ecuaciones típicas expandiendo el número de spins. Es necesario implementar grafos con grados muy
+elevados en los dispositivos cuánticos, así que es posible que aún no se puedan resolver todos los problemas de este tipo con el hardware actual.
+
+
+5.1. Set Cover
+
+Considerando un set U = {1, ..., n}  con los subconjuntos Vi ⊆ U(i=1, ..., N) tal que:
+
+U = ∪(i=1)(N) Vα
+
+Este problema consiste en encontrar el conjunto con el menor número de Vi para que su unión sea igual a U, un objetivo muy parecido al exact cover (punto 4.1). Este
+problema es NP-hard.
+
+Necesitamos un par de hamiltonianos para conseguir H = HA + HB. HB es el fácil, simplemente queremos minimizar el número de Vi incluidos:
+
+HB = B * ∑(i=1)(N) xi
+
+HA es un poco más complicado. 
 
