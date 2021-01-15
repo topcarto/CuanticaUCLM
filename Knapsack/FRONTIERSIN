@@ -208,3 +208,36 @@ HB = B * ∑(i=1)(N) xi
 
 HA es un poco más complicado. 
 
+
+5.2. Knapsack con pesos enteros
+
+El problema de la mochila (knapsack) es: tenemos una lista de N objetos, indexados con el índice α, con un peso asociado dado por wα y un valor asociado dado por cα; y
+tenemos una mochila que solo puede soportar un peso W. Si xα es una variable binaria siendo 1 que está contenida en la mochila y 0 que no, el peso máximo de la mochila
+es:
+
+W = ∑(i=1)(N) (xα * wα)
+
+y el coste total:
+
+C = ∑(i=1)(N) (xα * cα)
+
+Queremos maximizar C cumpliendo la condición de que W ≤ peso máximo.
+
+Siendo yn en 1 ≤ n ≤ W una variable binaria que es 1 si el peso final es n y 0 si no lo es, HA sería:
+
+HA = A * (1 − ∑(n=1)(W) (yn)) ^ 2 + A * (∑ (n=1)(W) (n * yn − ∑(α) (wα * xα))) ^ 2
+
+El primer sumando simplemente controla que el peso final sea menor que el peso máximo, si no lo está, se multiplicaría por A y descalificaría el estado como válido.
+El segundo sumando está compuesto por dos partes. Parece complicado, pero simplemente comprueba que el peso especificado es el correcto sumando todos los pesos de los
+objetos en la mochila y luego restándoselo al peso final. Si no sale 0, que es lo que debería salir, se multiplicaria por A y descalificaría el estado como válido.
+
+HB sería:
+
+HB = −B * ∑(α) (cα * xα)
+
+Simplemente suma todos los costes de los objetos, y les da un valor negativo para hacer que el valor del estado decremente y sea "más válido".
+
+Como no podemos hacer que HA sea infringida levemente para hacer que HB sea más negativo, necesitamos que 0 < B max(cα) < A. El número de spins necesarios para esta
+solución es N + ⌊1 + log(W).
+
+
