@@ -61,9 +61,22 @@ Estos problemas, como su nombre indica, son problemas que consisten en dividir u
 utilizar los problemas usando spin glasses para entender la dificultad computacional en problemas aleatorios.
 
 
-2.1. Particionamiento de números
+2.4. Reducir N a logN spins en algunas condiciones
 
-Si tenemos un conjunto de N números positivos
+Hay un truco para reducir considerablemente el número de spins en problemas en los que aparecen bits y auxiliares.
+
+Sabemos que queremos codificar una variable que puede tomar como valor 2, ..., N (o Δ si sabemos el grado máximo del grafo). Se define un entero M tal que:
+
+2^M ≤ N < 2^(M+1)
+
+De forma alternativa, M puede ser logN. En este caso, solo necesitaremos M+1 variables binarias en vez de N para codificar una variable con N posibles valores.
+
+En el Frontiersin, este apartado se basa en el apartado anterior (Cliques) y ponen como ejemplo como la ecuación que codifica la solución cambia:
+
+∑(n=1)(N) (n * yn) -> ∑(n=0)(M−1) (2^n * yn + (N + 1 − 2^M) * yM)
+
+Esta nueva fórmula sigue resolviendo el mismo problema sin pérdida de generalidad. Si N ≠ 2^M + 1 − 1, el estado base puede estar degenerado, ya que la suma de
+ys y un entero no siempre es única. Esta traducción deberá ser aplicada a todos los problemas computacionales.
 
 
 4. Covering and Packaging Problems
