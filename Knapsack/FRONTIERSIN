@@ -55,6 +55,17 @@ la energía de los Hamiltonianos contienen interacciones de 3 cuerpos. Sin embar
 complejidad del polinomio puede aumentar drásticamente.
 
 
+2. Problemas de particionamiento
+
+Estos problemas, como su nombre indica, son problemas que consisten en dividir un conjunto de objetos en dos conjuntos más pequeños. Son una gran ayuda a la hora de
+utilizar los problemas usando spin glasses para entender la dificultad computacional en problemas aleatorios.
+
+
+2.1. Particionamiento de números
+
+Si tenemos un conjunto de N números positivos
+
+
 4. Covering and Packaging Problems
 
 Los problemas de "Covering and Packaging" se pueden resumir con la pregunta: ¿Cómo puedo coger elementos de un grafo de forma que se quede "cubierto" de una forma
